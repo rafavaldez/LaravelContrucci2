@@ -31,3 +31,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::put('actualizar/{usuario}', [UsuarioController::class, 'actualizar'])->name('actualizar');
     Route::delete('eliminar/{usuario}', [UsuarioController::class, 'eliminar'])->name('eliminar');
 });
+
+Route::post('/upload', [FileUploadController::class, 'uploadFile']);
+Route::post('/api/registrar_tramite', [TramiteController::class, 'registrarTramite']);
+Route::get('/admin/destino', [AdminController::class, 'adminDestino']);
+Route::post('/admin/destino', [AdminController::class, 'destino']);
+
+Route::match(['get', 'post'], '/historial-anomalias', [AnomaliasController::class, 'adminHistorialAnomalias'])->name('historial-anomalias');
+Route::post('/admin/ResultadosInforme', [AdminController::class, 'adminResultadosInforme']);
